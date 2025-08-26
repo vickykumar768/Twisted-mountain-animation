@@ -1,0 +1,46 @@
+
+<div class="p-4">
+  <table class="min-w-full border border-gray-300">
+    <thead>
+      <tr class="bg-gray-100">
+        <th *ngFor="let header of headers" class="p-2 border">{{ header | uppercase}}</th>
+        <th class="p-2 border">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of paginatedData; let i = index" 
+          (click)="goToDetails(row)" 
+          class="cursor-pointer hover:bg-gray-50">
+
+        <td *ngFor="let header of headers" class="p-2 border">
+          <div *ngIf="editRow !== i">{{ row[header] }}</div>
+          <input *ngIf="editRow === i" [(ngModel)]="row[header]" class="border p-1 inputWIDTH"/>
+        </td>
+
+        <td class="p-2 border">
+          <button *ngIf="editRow !== i" 
+                  (click)="enableEdit(i + (currentPage - 1) * itemsPerPage); $event.stopPropagation()" 
+                  class="bg-blue-500 px-2 py-1 rounded EditTextColor">Edit</button>
+
+          <button *ngIf="editRow === i + (currentPage - 1) * itemsPerPage" 
+                  (click)="saveEdit(); $event.stopPropagation()" 
+                  class="bg-green-500  px-2 py-1 SaveTextColor rounded">Save</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination controls -->
+  <div class="postion">
+    <button (click)="changePage(currentPage - 1)" 
+            [disabled]="currentPage === 1"
+            class="px-3 py-1 border rounded bg-gray-200 disabled:opacity-50">Previous</button>
+
+    <span>Page {{ currentPage }} of {{ totalPages() }}</span>
+
+    <button (click)="changePage(currentPage + 1)" 
+            [disabled]="currentPage === totalPages()"
+            class="px-3 py-1 border rounded bg-gray-200 disabled:opacity-50">Next</button>
+  </div>
+</div>
+

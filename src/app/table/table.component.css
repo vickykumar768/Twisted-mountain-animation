@@ -1,0 +1,10 @@
+.EditTextColor{
+    color: red;
+}
+.SaveTextColor {
+color: green;
+}
+.postion{
+    margin-top: 1rem;
+    float: right;
+}
