@@ -4,6 +4,12 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## Development server
 
+clone the project use command :-  **git clone https://github.com/vickykumar768/Twisted-mountain-animation.git**
+checkout branch :- **setup-project**
+install node module use command :- **npm i --f**
+To run use command :- **ng serve/ ng s**
+
+
 To start a local development server, run:
 
 ```bash
